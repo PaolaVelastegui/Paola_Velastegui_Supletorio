@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText cedula,contraseña;
     String textCedula,textContrasenia;
-    Button aceptar;
+    Button aceptar, registro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         cedula = findViewById(R.id.editText_correo);
         contraseña = findViewById(R.id.editText_contrasenia);
         aceptar = findViewById(R.id.button_iniciar_sesion);
+        registro = findViewById(R.id.button_registrarse);
+
 
         aceptar.setOnClickListener(new View.OnClickListener() {
 
@@ -40,8 +42,27 @@ public class MainActivity extends AppCompatActivity {
                     contraseña.setError("Intente ingresar su contraseña");
                     contraseña.requestFocus();
                 }else{
-                    IngresarFirebase(textCedula,textContrasenia);
+                    Intent intentTarea = new Intent(MainActivity.this, MainActivity2.class);
+                    startActivity(intentTarea);
                 }
+            }
+            registro.setOnClickListener(new View.OnClickListener()
+
+            {
+                @Override
+                public void onClick (View view){
+                try {
+                    dbUsuarios dbUsers = new dbUsuarios(MainActivity.this);
+                    long id = dbUsers.insertarContactos(textCedula, textContrasenia);
+                    if (id != 0) {
+                        Toast.makeText(MainActivity.this, "Registro Guardado", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(MainActivity.this, "NO se guardo el registro", Toast.LENGTH_LONG).show();
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.this, "NO se guardo el registro", Toast.LENGTH_LONG).show();
+                }
+            }
             }
         });
     }
@@ -51,38 +72,45 @@ public class MainActivity extends AppCompatActivity {
                 Toast.LENGTH_SHORT).show();
     }
 
-    private boolean verificarCedVLJP(String cedula){
-        byte sum = 0;
-        Toast.makeText(MainActivity.this, String.valueOf(cedula.trim().length()),
-                Toast.LENGTH_SHORT).show();
-        try {
-            if (cedula.trim().length() != 10){
-                return false;}
-            String[] data = cedula.split("");
-            byte verifier = Byte.parseByte(data[0] + data[1]);
-            if (verifier < 1 || verifier > 24){
-                return false;}
-            byte[] digits = new byte[data.length];
-            for (byte i = 0; i < digits.length; i++){
-                digits[i] = Byte.parseByte(data[i]);}
-            if (digits[2] > 6){
-                return false;}
-            for (byte i = 0; i < digits.length - 1; i++) {
-                if (i % 2 == 0) {
-                    verifier = (byte) (digits[i] * 2);
-                    if (verifier > 9)
-                        verifier = (byte) (verifier - 9);
-                } else
-                    verifier = (byte) (digits[i] * 1);
-                sum = (byte) (sum + verifier);
-            }
-            if ((sum - (sum % 10) + 10 - sum) == digits[9]){
 
-                return true;}
-        } catch (Exception e) {
-            e.printStackTrace();
+    public boolean verificarContraseñaVLJP(String dato){
+        return  dato.matches("^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{6,10}$"); //Validar contraseña
+    }
+    public boolean verificarCedVLJP(String x){
+        int suma = 0;
+        if (x.length() == 9) {
+
+            return false;
+        } else {
+            int a[] = new int[x.length() / 2];
+            int b[] = new int[(x.length() / 2)];
+            int c = 0;
+            int d = 1;
+            for (int i = 0; i < x.length() / 2; i++) {
+                a[i] = Integer.parseInt(String.valueOf(x.charAt(c)));
+                c = c + 2;
+                if (i < (x.length() / 2) - 1) {
+                    b[i] = Integer.parseInt(String.valueOf(x.charAt(d)));
+                    d = d + 2;
+                }
+            }
+            for (int i = 0; i < a.length; i++) {
+                a[i] = a[i] * 2;
+                if (a[i] > 9) {
+                    a[i] = a[i] - 9;
+                }
+                suma = suma + a[i] + b[i];
+            }
+            int aux = suma / 10;
+            int dec = (aux + 1) * 10;
+            if ((dec - suma) == Integer.parseInt(String.valueOf(x.charAt(x.length() - 1))))
+                return true;
+            else if (suma % 10 == 0 && x.charAt(x.length() - 1) == '0') {
+                return true;
+            } else {
+                return false;
+            }
         }
-        return false;
     }
 
     @Override
@@ -95,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         //if(true){
             //Toast.makeText(MenuPrincipal.this, "Usuario logeado", Toast.LENGTH_SHORT).show();
        // }else{
-           // startActivity(new Intent(MainActivity.this,MainActivity2.class));
+            //startActivity(new Intent(MainActivity.this,MainActivity2.class));
             //finish();
         //}
     }
