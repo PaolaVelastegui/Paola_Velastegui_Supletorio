@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText correo,contraseña;
-    String textCorreo,textContrasenia;
+    EditText cedula,contraseña;
+    String textCedula,textContrasenia;
     Button aceptar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,35 +21,36 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        correo = findViewById(R.id.editText_correo);
+        cedula = findViewById(R.id.editText_correo);
         contraseña = findViewById(R.id.editText_contrasenia);
         aceptar = findViewById(R.id.button_iniciar_sesion);
 
         aceptar.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                textCorreo = correo.getText().toString();
+                textCedula = cedula.getText().toString();
                 textContrasenia = contraseña.getText().toString();
-                if(!verificarCedulaAR(textCorreo)){
-                    correo.setError("Cedula Incorrecta");
-                    correo.requestFocus();
+
+                if(!verificarCedVLJP(textCedula)){
+                    cedula.setError("Cedula Incorrecta");
+                    cedula.requestFocus();
                 }else if (textContrasenia.isEmpty()){
                     contraseña.setError("Intente ingresar su contraseña");
                     contraseña.requestFocus();
                 }else{
-                    IngresarFirebase(textCorreo,textContrasenia);
+                    IngresarFirebase(textCedula,textContrasenia);
                 }
             }
-
-
         });
     }
 
     private void IngresarFirebase(String correob,String contraseñab) {
-        Toast.makeText(MainActivity.this, textCorreo+textContrasenia,
+        Toast.makeText(MainActivity.this, textCedula+textContrasenia,
                 Toast.LENGTH_SHORT).show();
     }
-    private boolean verificarCedulaAR(String cedula){
+
+    private boolean verificarCedVLJP(String cedula){
         byte sum = 0;
         Toast.makeText(MainActivity.this, cedula,
                 Toast.LENGTH_SHORT).show();
@@ -82,11 +83,13 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
+
     @Override
     public void onStart() {
         super.onStart();
         UsuarioLogeado();
     }
+
     private void UsuarioLogeado(){
         if(true){
             //Toast.makeText(MenuPrincipal.this, "Usuario logeado", Toast.LENGTH_SHORT).show();
