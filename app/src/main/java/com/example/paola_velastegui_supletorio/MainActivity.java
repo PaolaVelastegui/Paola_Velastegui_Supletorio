@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean verificarCedVLJP(String cedula){
         byte sum = 0;
-        Toast.makeText(MainActivity.this, cedula,
+        Toast.makeText(MainActivity.this, String.valueOf(cedula.trim().length()),
                 Toast.LENGTH_SHORT).show();
         try {
             if (cedula.trim().length() != 10){
