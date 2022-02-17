@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     cedula.setError("Cedula Incorrecta");
                     cedula.requestFocus();
                 }else if (textContrasenia.isEmpty()){
-                    contraseña.setError("Intente ingresar su contraseña");
+                    contraseña.setError("Contraseña incorrecta contraseña");
                     contraseña.requestFocus();
                 }else{
                     Intent intentTarea = new Intent(MainActivity.this, MainActivity2.class);
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 }else if (textContrasenia.isEmpty()) {
                     contraseña.setError("Ingrese contraseña");
                     contraseña.requestFocus();
-                }else if(validarClave(textContrasenia)){
+                }else if(!validarClave(textContrasenia)){
                     contraseña.setError("Intente ingresar su contraseña");
                     contraseña.requestFocus();
                 }else{
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         Pattern pat = Pattern.compile("[a-z]");
         Pattern pat2 = Pattern.compile("[A-Z]");
         Pattern pat3 = Pattern.compile("[0-9]");
-        Pattern pat4 = Pattern.compile("[./';:{}()=+*<>#]");
+        Pattern pat4 = Pattern.compile("[./';:&^%$@!~`|_{}()=+*<>#]");
 
 
         Matcher mat = pat.matcher(clave);
