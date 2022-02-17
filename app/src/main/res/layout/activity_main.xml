@@ -54,7 +54,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Usuario: 1805308895 - pao001" />
+            android:text="Usuario: 1805308895 - A01**##s" />
 
     </LinearLayout>
 </LinearLayout>

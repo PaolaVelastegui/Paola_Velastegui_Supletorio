@@ -39,11 +39,14 @@ public class MainActivity extends AppCompatActivity {
                 textCedula = cedula.getText().toString();
                 textContrasenia = contraseña.getText().toString();
 
-                if(!verificarCedVLJP(textCedula)){
+                if(!verificarCedVLJP(textCedula)) {
                     cedula.setError("Cedula Incorrecta");
                     cedula.requestFocus();
-                }else if (textContrasenia.isEmpty()){
-                    contraseña.setError("Contraseña incorrecta contraseña");
+                }else if (textContrasenia.isEmpty()) {
+                    contraseña.setError("Ingrese contraseña");
+                    contraseña.requestFocus();
+                }else if(!validarClave(textContrasenia)){
+                    contraseña.setError("Intente ingresar su contraseña");
                     contraseña.requestFocus();
                 }else{
                     Intent intentTarea = new Intent(MainActivity.this, MainActivity2.class);
