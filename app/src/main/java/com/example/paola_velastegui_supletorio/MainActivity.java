@@ -55,17 +55,17 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, cedula,
                 Toast.LENGTH_SHORT).show();
         try {
-            if (cedula.trim().length() != 10)
-                return false;
+            if (cedula.trim().length() != 10){
+                return false;}
             String[] data = cedula.split("");
             byte verifier = Byte.parseByte(data[0] + data[1]);
-            if (verifier < 1 || verifier > 24)
-                return false;
+            if (verifier < 1 || verifier > 24){
+                return false;}
             byte[] digits = new byte[data.length];
-            for (byte i = 0; i < digits.length; i++)
-                digits[i] = Byte.parseByte(data[i]);
-            if (digits[2] > 6)
-                return false;
+            for (byte i = 0; i < digits.length; i++){
+                digits[i] = Byte.parseByte(data[i]);}
+            if (digits[2] > 6){
+                return false;}
             for (byte i = 0; i < digits.length - 1; i++) {
                 if (i % 2 == 0) {
                     verifier = (byte) (digits[i] * 2);
@@ -75,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
                     verifier = (byte) (digits[i] * 1);
                 sum = (byte) (sum + verifier);
             }
-            if ((sum - (sum % 10) + 10 - sum) == digits[9])
+            if ((sum - (sum % 10) + 10 - sum) == digits[9]){
 
-                return true;
+                return true;}
         } catch (Exception e) {
             e.printStackTrace();
         }
