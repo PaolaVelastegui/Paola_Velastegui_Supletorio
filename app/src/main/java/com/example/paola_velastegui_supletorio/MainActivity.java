@@ -2,6 +2,7 @@ package com.example.paola_velastegui_supletorio;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         if(true){
             //Toast.makeText(MenuPrincipal.this, "Usuario logeado", Toast.LENGTH_SHORT).show();
         }else{
-            //startActivity(new Intent(MainActivity.this,MainActivity2.class));
+            startActivity(new Intent(MainActivity.this,MainActivity2VLJP.class));
             finish();
         }
     }
