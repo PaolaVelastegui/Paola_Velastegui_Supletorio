@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 textCedula = cedula.getText().toString();
                 textContrasenia = contraseña.getText().toString();
 
-                
+
                 if(!verificarCedVLJP(textCedula)){
                     cedula.setError("Cedula Incorrecta");
                     cedula.requestFocus();
@@ -92,12 +92,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void UsuarioLogeado(){
-        if(true){
+        //if(true){
             //Toast.makeText(MenuPrincipal.this, "Usuario logeado", Toast.LENGTH_SHORT).show();
-        }else{
-            startActivity(new Intent(MainActivity.this,MainActivity2.class));
-            finish();
-        }
+       // }else{
+           // startActivity(new Intent(MainActivity.this,MainActivity2.class));
+            //finish();
+        //}
     }
 
 
