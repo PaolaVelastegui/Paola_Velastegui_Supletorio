@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.paola_velastegui_supletorio.db.usuarios;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText cedula,contraseña;
@@ -46,25 +48,36 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intentTarea);
                 }
             }
-            registro.setOnClickListener(new View.OnClickListener()
 
-            {
-                @Override
-                public void onClick (View view){
-                try {
-                    dbUsuarios dbUsers = new dbUsuarios(MainActivity.this);
-                    long id = dbUsers.insertarContactos(textCedula, textContrasenia);
-                    if (id != 0) {
-                        Toast.makeText(MainActivity.this, "Registro Guardado", Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(MainActivity.this, "NO se guardo el registro", Toast.LENGTH_LONG).show();
-                    }
-                } catch (Exception e) {
-                    Toast.makeText(MainActivity.this, "NO se guardo el registro", Toast.LENGTH_LONG).show();
+        });
+
+        registro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                 if (verificarContraseñaVLJP(textContrasenia)){
+                    contraseña.setError("Intente ingresar su contraseña");
+                    contraseña.requestFocus();
+                }else{
+                     try{
+                         usuarios dbUsers = new usuarios(MainActivity.this);
+                         long id = dbUsers.insertarContactos(textCedula,textContrasenia);
+                         if(id != 0){
+                             Toast.makeText(MainActivity.this, "Registro Guardado",Toast.LENGTH_LONG).show();
+                         }else{
+                             Toast.makeText(MainActivity.this,"NO se guardo el registro", Toast.LENGTH_LONG).show();
+                         }
+                     }catch (Exception e){
+                         Toast.makeText(MainActivity.this,"NO se guardo el registro", Toast.LENGTH_LONG).show();
+                     }
+
+                 //   Intent intentTarea = new Intent(MainActivity.this, MainActivity2.class);
+                   // startActivity(intentTarea);
                 }
-            }
+
             }
         });
+
     }
 
     private void IngresarFirebase(String correob,String contraseñab) {
