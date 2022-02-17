@@ -14,7 +14,7 @@ public class bdTareas {
        // super(context, DATABSE_NOMBRE,null,DATABASE_VERSION);
     }
 
-    @Override
+    /*@Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_TAREAS + "("+
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -22,9 +22,13 @@ public class bdTareas {
                 "CLAVE TEXT NOT NULL)");
     }
 
+     */
+/*
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_TAREAS);
         onCreate(sqLiteDatabase);
     }
+
+ */
 }
