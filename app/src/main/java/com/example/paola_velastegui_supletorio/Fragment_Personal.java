@@ -34,6 +34,7 @@ public class Fragment_Personal extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
     private Button eliminarimagen;
     View root;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,30 +54,7 @@ public class Fragment_Personal extends Fragment {
 
 
     private void recuperarDatosFB() {
-/*
-        databaseReference.child(user.getUid()).child("Tareas").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listaTareas.clear();
-                for (DataSnapshot objeto: snapshot.getChildren()) {
 
-                    Tarea tarea = objeto.getValue(Tarea.class);
-                    if(tarea.getTipo().equals("p") && tarea.getCompletado()==false){
-                        listaTareas.add(tarea);
-                    }
-
-                }
-                //└Toast.makeText(getActivity(), String.valueOf(listaTareas.size()), Toast.LENGTH_SHORT).show();
-                AdapterRecyclerView();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
- */
     }
 
     private void AdapterRecyclerView() {

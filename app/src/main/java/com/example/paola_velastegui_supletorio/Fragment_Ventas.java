@@ -55,29 +55,6 @@ public class Fragment_Ventas extends Fragment {
         return root;
     }
     private void recuperarDatosFB() {
-       /* FirebaseUser user = mAuth.getCurrentUser();
-        databaseReference.child(user.getUid()).child("Tareas").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listaTareas.clear();
-                for (DataSnapshot objeto: snapshot.getChildren()) {
-                    Tarea tarea = objeto.getValue(Tarea.class);
-                    if(tarea.getTipo().equals("b") && tarea.getCompletado()==false){
-                        listaTareas.add(tarea);
-                    }
-                }
-                //└Toast.makeText(getActivity(), String.valueOf(listaTareas.size()), Toast.LENGTH_SHORT).show();
-                AdapterRecyclerView();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        */
-
 
     }
 
@@ -92,9 +69,10 @@ public class Fragment_Ventas extends Fragment {
         }, new AdapterTareaVLJP.OnViewClickListener() {
             @Override
             public void onViewClick(Tarea tarea, int positio, boolean estado) {
-
             }
+
         });
+
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }
