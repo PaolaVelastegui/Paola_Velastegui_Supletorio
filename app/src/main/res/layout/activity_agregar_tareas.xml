@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AgregarTareas">
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="32dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/editTextTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Titulo"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/editTextTextdescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Descripcion"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/Agregar_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="agregar" />
+
+    <Button
+        android:id="@+id/cancelar_boton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="cancelar" />
+</LinearLayout>
