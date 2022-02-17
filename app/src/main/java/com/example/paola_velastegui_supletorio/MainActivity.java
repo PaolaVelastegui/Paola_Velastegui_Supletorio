@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         if(true){
             //Toast.makeText(MenuPrincipal.this, "Usuario logeado", Toast.LENGTH_SHORT).show();
         }else{
-            startActivity(new Intent(MainActivity.this,MainActivity2VLJP.class));
+            startActivity(new Intent(MainActivity.this,MainActivity2.class));
             finish();
         }
     }

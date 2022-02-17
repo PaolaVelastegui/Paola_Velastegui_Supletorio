@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.paola_velastegui_supletorio.databinding.ActivityMain2Binding;
 import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity2VLJP extends AppCompatActivity {
-    private MainActivity2VLJPBinding binding;
+public class MainActivity2 extends AppCompatActivity {
+
+    private ActivityMain2Binding binding;
     private ImageView añadirimagen;
     private  ImageView reportes;
 
@@ -52,5 +54,6 @@ public class MainActivity2VLJP extends AppCompatActivity {
         Intent intent = new Intent(MainActivity2.this, AgregarTareas.class);
         startActivity(intent);
     }
+
 
 }
