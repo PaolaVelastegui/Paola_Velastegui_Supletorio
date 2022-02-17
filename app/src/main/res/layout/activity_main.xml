@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="259dp"
+        android:layout_height="446dp"
         android:orientation="vertical"
         android:paddingHorizontal="18dp"
         android:paddingTop="20dp">
@@ -49,6 +49,12 @@
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:text="Registrarse" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Usuario: 1805308895 - pao001" />
 
     </LinearLayout>
 </LinearLayout>
