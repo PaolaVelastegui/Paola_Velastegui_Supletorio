@@ -27,9 +27,7 @@ public class Fragment_Ventas extends Fragment {
     private Button eliminarimagen;
     View root;
 
-
     public Fragment_Ventas() {
-        // Required empty public constructor
     }
 
 
