@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Paola_Velastegui_Supletorio">
         <activity
-            android:name=".Registrarse"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity2VLJP"
             android:exported="false" />
         <activity
