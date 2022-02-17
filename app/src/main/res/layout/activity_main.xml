@@ -11,7 +11,7 @@
         android:layout_height="446dp"
         android:orientation="vertical"
         android:paddingHorizontal="18dp"
-        android:paddingTop="20dp">
+        android:paddingTop="15dp">
 
         <EditText
             android:id="@+id/editText_correo"

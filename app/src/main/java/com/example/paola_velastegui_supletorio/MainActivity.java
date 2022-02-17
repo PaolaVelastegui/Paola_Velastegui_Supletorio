@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import com.example.paola_velastegui_supletorio.db.usuarios;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText cedula,contraseña;
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 }else if (textContrasenia.isEmpty()) {
                     contraseña.setError("Ingrese contraseña");
                     contraseña.requestFocus();
-                }else if(verificarContraseñaVLJP(textContrasenia)){
+                }else if(validarClave(textContrasenia)){
                     contraseña.setError("Intente ingresar su contraseña");
                     contraseña.requestFocus();
                 }else{
@@ -94,6 +97,34 @@ public class MainActivity extends AppCompatActivity {
                 Toast.LENGTH_SHORT).show();
     }
 
+    public boolean validarClave(String clave) {
+        boolean valida;
+
+        String[] claveSeparada = clave.split("");
+
+
+        Pattern pat = Pattern.compile("[a-z]");
+        Pattern pat2 = Pattern.compile("[A-Z]");
+        Pattern pat3 = Pattern.compile("[0-9]");
+        Pattern pat4 = Pattern.compile("[./';:{}()=+*<>#]");
+
+
+        Matcher mat = pat.matcher(clave);
+        Matcher mat2 = pat2.matcher(clave);
+        Matcher mat3 = pat3.matcher(clave);
+        Matcher mat4 = pat4.matcher(clave);
+
+        if(claveSeparada.length >= 4){
+            if(mat.find() && mat2.find() && mat3.find() && mat4.find()){
+                valida = true;
+            }else{
+                valida = false;
+            }
+        }else{
+            valida = false;
+        }
+        return valida;
+    }
 
     public boolean verificarContraseñaVLJP(String dato){
         return  dato.matches("^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{6,10}$"); //Validar contraseña
