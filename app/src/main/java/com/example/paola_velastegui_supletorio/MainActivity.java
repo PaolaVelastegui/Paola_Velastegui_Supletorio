@@ -30,10 +30,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 textCorreo = correo.getText().toString();
                 textContrasenia = contraseña.getText().toString();
-                if(!VerificarVLJP(textCorreo)){
+                if(!verificarCedulaAR(textCorreo)){
                     correo.setError("Cedula Incorrecta");
                     correo.requestFocus();
-
                 }else if (textContrasenia.isEmpty()){
                     contraseña.setError("Intente ingresar su contraseña");
                     contraseña.requestFocus();
@@ -50,8 +49,10 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, textCorreo+textContrasenia,
                 Toast.LENGTH_SHORT).show();
     }
-    private boolean VerificarVLJP(String cedula){
+    private boolean verificarCedulaAR(String cedula){
         byte sum = 0;
+        Toast.makeText(MainActivity.this, cedula,
+                Toast.LENGTH_SHORT).show();
         try {
             if (cedula.trim().length() != 10)
                 return false;
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 sum = (byte) (sum + verifier);
             }
             if ((sum - (sum % 10) + 10 - sum) == digits[9])
+
                 return true;
         } catch (Exception e) {
             e.printStackTrace();
