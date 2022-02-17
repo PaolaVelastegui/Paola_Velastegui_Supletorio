@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 textCedula = cedula.getText().toString();
                 textContrasenia = contraseña.getText().toString();
 
+                
                 if(!verificarCedVLJP(textCedula)){
                     cedula.setError("Cedula Incorrecta");
                     cedula.requestFocus();
