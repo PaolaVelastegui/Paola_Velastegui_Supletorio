@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
                 textCedula = cedula.getText().toString();
                 textContrasenia = contraseña.getText().toString();
 
-
                 if(!verificarCedVLJP(textCedula)){
                     cedula.setError("Cedula Incorrecta");
                     cedula.requestFocus();
@@ -55,7 +54,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                 if (verificarContraseñaVLJP(textContrasenia)){
+                textCedula = cedula.getText().toString();
+                textContrasenia = contraseña.getText().toString();
+
+                if(!verificarCedVLJP(textCedula)) {
+                    cedula.setError("Cedula Incorrecta");
+                    cedula.requestFocus();
+                }else if (textContrasenia.isEmpty()) {
+                    contraseña.setError("Ingrese contraseña");
+                    contraseña.requestFocus();
+                }else if(verificarContraseñaVLJP(textContrasenia)){
                     contraseña.setError("Intente ingresar su contraseña");
                     contraseña.requestFocus();
                 }else{
@@ -64,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
                          long id = dbUsers.insertarContactos(textCedula,textContrasenia);
                          if(id != 0){
                              Toast.makeText(MainActivity.this, "Registro Guardado",Toast.LENGTH_LONG).show();
+                             Intent intentTarea = new Intent(MainActivity.this, MainActivity2.class);
+                             startActivity(intentTarea);
                          }else{
                              Toast.makeText(MainActivity.this,"NO se guardo el registro", Toast.LENGTH_LONG).show();
                          }
@@ -71,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
                          Toast.makeText(MainActivity.this,"NO se guardo el registro", Toast.LENGTH_LONG).show();
                      }
 
-                 //   Intent intentTarea = new Intent(MainActivity.this, MainActivity2.class);
-                   // startActivity(intentTarea);
+
                 }
 
             }
