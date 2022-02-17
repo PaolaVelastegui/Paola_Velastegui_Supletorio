@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class AdapterTareaVLJP {
+public class AdapterTareaVLJP extends RecyclerView.Adapter<AdapterTareaVLJP.ViewHolder> {
 
     private List<Tarea> tareas;
     private int layout;

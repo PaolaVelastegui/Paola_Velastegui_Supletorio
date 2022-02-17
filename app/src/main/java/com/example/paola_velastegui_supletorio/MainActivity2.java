@@ -25,9 +25,9 @@ public class MainActivity2 extends AppCompatActivity {
         binding = ActivityMain2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
+        //SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = binding.viewPager;
-        viewPager.setAdapter(sectionsPagerAdapter);
+        //viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
         añadirimagen = findViewById(R.id.imageView_add);
@@ -35,8 +35,8 @@ public class MainActivity2 extends AppCompatActivity {
         reportes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity2.this, Reportesfinal.class);
-                startActivity(intent);
+                //Intent intent = new Intent(MainActivity2.this, Reportesfinal.class);
+               // startActivity(intent);
             }
         });
         añadirimagen.setOnClickListener(new View.OnClickListener() {
